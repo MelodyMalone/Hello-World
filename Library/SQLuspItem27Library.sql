@@ -30,9 +30,19 @@ WHERE branchName = 'Sharpstown';
 */
 
 --Item 5
-SELECT
+SELECT aa.branchName, ab.NO_ofCopies
+FROM tblCopies ab
+INNER JOIN tblBranch aa on aa.branchID = ab.branchID
+INNER JOIN tblLoans ac on ac.branchID = ab.branchID
+WHERE dueDate = '%'
+GROUP BY branchName;
 
---Itme 6
+--Item 6
+SELECT aa.borrowerName, aa.borrowerAddres
+FROM tblBorrower aa
+INNER JOIN tblLoans ab on aa.cardNO = ab.cardNO
+Where count(bookID) >= 5;
+
 --Item 7
 SELECT aa.bookTitle, ab.NO_ofCopies
 FROM tblBook aa
